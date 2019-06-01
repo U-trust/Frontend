@@ -1,4 +1,5 @@
 import React, {useState} from 'react';
+import {observer} from 'mobx-react';
 import styled from 'styled-components';
 import StatusStore from 'store/StatusStore';
 import { StatusCard } from 'components/Card/StatusCard';
@@ -18,7 +19,7 @@ const Title = styled.div`
     margin-bottom: 20px;
 `
 
-const Status: React.FC = () => {
+const Status: React.FC = observer(() => {
     const [statusStore] = useState(() => new StatusStore());
     return (
         <Container>
@@ -26,6 +27,6 @@ const Status: React.FC = () => {
             {statusStore.applyTracks.map(track => <StatusCard track={track} />)}
         </Container>
     )
-}
+})
 
 export default Status;

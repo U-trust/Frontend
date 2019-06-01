@@ -9,6 +9,7 @@ import SearchContainer from '../Search';
 import HomeContainer from '../Home';
 import TrackDetailContainer from '../TrackDetail';
 import StatusContainer from '../Status';
+import MyInfoContainer from '../MyInfo';
 import AuthStore from '../../store/AuthStore';
 
 const AppContainer = styled.div`
@@ -31,6 +32,7 @@ const App: React.FC = () => {
             <Route path="/signup" component={SignupContainer} />
             <Route path="/detail" component={TrackDetailContainer} />
             <Route path="/status" component={StatusContainer} />
+            <Route path="/myinfo" component={MyInfoContainer} />
           </div>
         </Router>
       </AppContainer>

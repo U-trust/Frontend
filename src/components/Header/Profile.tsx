@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useCallback} from 'react';
 import Account from '../../models/Account';
 import styled from 'styled-components';
 import dropdownIcon from '../../assets/ic_arrow_down.svg';
@@ -35,6 +35,8 @@ const Menu = styled.div`
     display: none;
     padding: 10px;
     border: solid 1px rgba(0, 0, 0, 0.15);
+    cursor: pointer;
+    width: 70px;
 `
 const ProfileContainer = styled.div`
     display: flex;
@@ -51,15 +53,17 @@ const ProfileContainer = styled.div`
 `
 
 interface Props {
-    account: Account
+    account: Account,
+    onMenuClick: (path: string) => void
 }
 
-export const Profile: React.FC<Props> = ({ account }) => {
+export const Profile: React.FC<Props> = ({ account, onMenuClick }) => {
+    const myInfo = useCallback(() => onMenuClick('/myinfo'), [onMenuClick]);
     return (
         <ProfileContainer>
             <Image src={account.photo} />
             <Label>{account.name} <ArrowImg src={dropdownIcon}/></Label>
-            <Menu>asdad</Menu>
+            <Menu onClick={myInfo}>내정보</Menu>
         </ProfileContainer>
     )
 }

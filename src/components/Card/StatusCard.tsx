@@ -7,7 +7,7 @@ const Container = styled.div`
     display: flex;
 `
 const Image = styled.img`
-    width: 240px;
+    width: 220px;
     height: 130px;
     margin-right: 20px;
 `

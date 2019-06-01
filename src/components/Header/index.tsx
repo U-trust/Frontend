@@ -20,6 +20,7 @@ const Header: React.FC<Props> = inject('authStore')(observer(({ authStore, histo
     const home = useCallback(() => history.push('/home'), [history]);
     const search = useCallback(() => history.push('/search'), [history]);
     const status = useCallback(() => history.push('/status'), [history]);
+    const onMenuClick = useCallback((path: string) => history.push(path), [history]);
     return (
         <HeaderContainer>
             <Logo src={logo} onClick={home} />
@@ -33,7 +34,7 @@ const Header: React.FC<Props> = inject('authStore')(observer(({ authStore, histo
                 {!!auth.account && (<>
                     <HeavyMenu>메세지</HeavyMenu>
                     <HeavyMenu>알림</HeavyMenu>
-                    <Profile account={auth.account}/>
+                    <Profile account={auth.account} onMenuClick={onMenuClick}/>
                 </>)}
                 <HeavyMenu>기업서비스</HeavyMenu>
             </RightMenu>
