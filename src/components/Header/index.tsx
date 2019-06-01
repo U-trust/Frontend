@@ -16,13 +16,14 @@ const Logo = styled.img`
     width: 36px;
     height: 36px;
     padding-right: 10px;
+    cursor: pointer;
 `
 
 const RightMenu = styled.div`
     position: absolute;
     padding: 12px 0;
     top: 0;
-    right: 0;
+    right: 15px;
     height: calc(100% - 24px);
     align-items: center;
     display: flex;
@@ -53,9 +54,10 @@ const Line = styled.div`
 
 const Header: React.FC<RouteComponentProps> = ({history}) => {
     const signin = useCallback(() => history.push('/signin'), [history]);
+    const home = useCallback(() => history.push('/'), [history]);
     return (
         <HeaderContainer>
-            <Logo src={logo} />
+            <Logo src={logo} onClick={home}/>
             <Line />
             <SearchBar />
             <RightMenu>

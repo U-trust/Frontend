@@ -9,12 +9,12 @@ export default class SignStore {
     @observable password: string = '';
 
 
-    async signin() {
+    signin = async () => {
         const res = await AuthApi.signin(this.email, this.password);
         alert(res);
     }
 
-    async signup() {
+    signup = async () => {
         const res = await AuthApi.signup(this.firstName + this.lastName, this.email, this.password);
         alert(res);
     }
