@@ -1,10 +1,14 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import App from './containers/App';
+import Signup from './containers/Signup';
 import * as serviceWorker from './serviceWorker';
 
-ReactDOM.render(<App />, document.getElementById('root'));
+import Amplify from 'aws-amplify';
+import aws_exports from './aws-exports';
+Amplify.configure(aws_exports);
+
+ReactDOM.render(<Signup />, document.getElementById('root'));
 
 // If you want your app to work offline and load faster, you can change
 // unregister() to register() below. Note this comes with some pitfalls.
