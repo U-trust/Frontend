@@ -1,11 +1,16 @@
 import { observable, action } from 'mobx';
 import { Track } from '../models/Track';
 
+const filterMap: {[key: string]: string[]} = {
+    '개발자' : ['프론트엔드 개발자', '백엔드 개발자', 'Java 개발자', '머신러닝 개발자', '데이터 분석가'],
+    '디자이너' : ['UI 디자이너', 'UX 디자이너', '그래픽 디자이너']
+}
+
 export default class SearchStore {
     @observable firstFilter?: string;
     @observable secondFilter?: string;
-    @observable firstFilters: string[] = ['filter1', 'filter2'];
-    @observable secondFilters: string[] = ['filter1', 'filter2'];
+    @observable firstFilters: string[] = ['개발자', '디자이너'];
+    @observable secondFilters: string[] = [];
     @observable results: Track[] = [{
         id: '1',
         title: '블랭크가 책임져드립니다. 개발자...',
@@ -75,6 +80,9 @@ export default class SearchStore {
 
     @action setFirstFilter = (filter?: string) => {
         this.firstFilter = filter;
+        if(!!filter) {
+            this.secondFilters = filterMap[filter];
+        }
     }
 
     @action setSecondFilter = (filter?: string) => {

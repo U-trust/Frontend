@@ -6,6 +6,7 @@ import styled from 'styled-components';
 import SigninContainer from '../Auth/Signin';
 import SignupContainer from '../Auth/Signup';
 import SearchContainer from '../Search';
+import HomeContainer from '../Home';
 import AuthStore from '../../store/AuthStore';
 
 const AppContainer = styled.div`
@@ -21,7 +22,8 @@ const App: React.FC = () => {
       <AppContainer>
         <Router>
           <Header />
-          <div style={{ flex: 1, marginTop: '70px' }}>
+          <div style={{ flex: 1, marginTop: '60px' }}>
+            <Route path="/home" component={HomeContainer} />
             <Route path="/search" component={SearchContainer} />
             <Route path="/signin" component={SigninContainer} />
             <Route path="/signup" component={SignupContainer} />
