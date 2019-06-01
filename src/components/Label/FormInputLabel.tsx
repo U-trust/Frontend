@@ -17,15 +17,15 @@ const Label = styled.div`
     margin-bottom: 8px;
 `
 
-export const FormLabel: React.FC<Props> = ({ title }) => {
+export const FormInputLabel: React.FC<Props> = ({ title }) => {
     return (<Label>{title}</Label>)
 }
 
-export const withFormLabel = <P extends object>(
+export const withFormInputLabel = <P extends object>(
     Component: React.ComponentType<P>
 ): React.FC<P & Props> => ({ title, ...props }: Props) => (
     <>
-        <FormLabel title={title} />
+        <FormInputLabel title={title} />
         {<Component {...props as P} />}
     </>
 );
