@@ -7,6 +7,7 @@ export const Container = styled.div`
     flex-flow: column;
     align-items: center;
     justify-content: center;
+    height: 100%;
 `
 export const FormContainer = styled.div`
     display: flex;

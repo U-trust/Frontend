@@ -14,7 +14,7 @@ const Signup: React.FC = () => {
                     <TextInput placeholder="이름" />
                 </FormGroup>
                 <FormInput title="이메일" placeholder="이메일을 입력해주세요" />
-                <FormInput title="비밀번호" placeholder="비밀번호를 입략해주세요" />
+                <FormInput style={{ marginBottom: '40px' }} title="비밀번호" placeholder="비밀번호를 입략해주세요" />
                 <FormButton>회원가입</FormButton>
                 <SimpleLabel>회원가입시 UTRUST의 이용약관, 개인정보처리방침을 읽고 이해하셨으며 해당 내용에 동의하신 것이 됩니다.</SimpleLabel>
             </FormContainer>

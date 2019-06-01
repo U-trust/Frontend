@@ -16,7 +16,7 @@ const Signin: React.FC = () => {
                 <Title>로그인</Title>
                 <FormInput title="이메일" placeholder="이메일을 입력해주세요" />
                 <FormInput title="비밀번호" placeholder="비밀번호를 입략해주세요" margin={false} style={{marginBottom: '4px'}}/>
-                <SimpleLabel style={{ marginBottom: '40px' }}>비밀번호를 잊어버리셨나요?</SimpleLabel>
+                <SimpleLabel style={{ marginBottom: '40px', cursor: 'pointer'}}>비밀번호를 잊어버리셨나요?</SimpleLabel>
                 <FormButton style={{marginBottom: '4px'}}>로그인</FormButton>
                 <SimpleLabel>아직 회원이 아니신가요? <SubLabel>회원가입하러가기</SubLabel></SimpleLabel>
             </FormContainer>
