@@ -39,6 +39,7 @@ const Menu = styled.div`
 const ProfileContainer = styled.div`
     display: flex;
     align-items: center;
+    padding: 20px 0;
     &:hover ${ArrowImg}{
         transform: rotate(180deg);
     }

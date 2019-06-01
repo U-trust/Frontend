@@ -9,6 +9,7 @@ body {
   -moz-osx-font-smoothing: grayscale;
   font-family: 'Spoqa Han Sans';
   height: 100vh;
+  min-width: 980px;
 }
 
 #root {

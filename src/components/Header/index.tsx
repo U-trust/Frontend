@@ -21,7 +21,7 @@ const Header: React.FC<Props> = inject('authStore')(observer(({ authStore, histo
     return (
         <HeaderContainer>
             <Logo src={logo} onClick={home} />
-            <Line />
+            <Line style={{height: 'auto'}}/>
             <SearchBar />
             <RightMenu>
                 <LightMenu>탐색</LightMenu>

@@ -26,3 +26,10 @@ export const RightGroup = styled.div`
     justify-content: flex-end;
     align-items: flex-end;
 `
+
+export const Grid = styled.div`
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-gap: 10px;
+    
+`

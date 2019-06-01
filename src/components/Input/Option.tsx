@@ -9,6 +9,7 @@ const Menu = styled.div`
     border-width: 0 1px 1px 1px;
     border-style: solid;
     border-color: rgba(0, 0, 0, 0.4);
+    background: white;
     & > option {
         padding: 6px 10px;
         &:hover {

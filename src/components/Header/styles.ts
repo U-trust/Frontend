@@ -3,7 +3,9 @@ export const HeaderContainer = styled.header`
 padding: 12px 10%;
 border-bottom: 1px solid rgba(0, 0, 0, 0.15);
 display: flex;
-position: relative;
+position: fixed;
+width: 80%;
+background: white;
 `
 
 export const Logo = styled.img`

@@ -21,7 +21,7 @@ const App: React.FC = () => {
       <AppContainer>
         <Router>
           <Header />
-          <div style={{ flex: 1 }}>
+          <div style={{ flex: 1, marginTop: '70px' }}>
             <Route path="/search" component={SearchContainer} />
             <Route path="/signin" component={SigninContainer} />
             <Route path="/signup" component={SignupContainer} />
