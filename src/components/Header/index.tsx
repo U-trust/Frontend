@@ -1,9 +1,11 @@
 import React from 'react';
+import { useCallback } from 'react';
+import { withRouter, RouteComponentProps } from 'react-router';
 import styled from 'styled-components';
 import logo from '../../assets/logo.svg';
 import { SearchBar } from './SearchBar';
 
-const Header = styled.header`
+const HeaderContainer = styled.header`
     padding: 12px 10%;
     border-bottom: 1px solid rgba(0, 0, 0, 0.15);
     display: flex;
@@ -49,9 +51,10 @@ const Line = styled.div`
     background-color: rgba(0, 0, 0, 0.15);
 `
 
-const Toolbar: React.FC = () => {
+const Header: React.FC<RouteComponentProps> = ({history}) => {
+    const signin = useCallback(() => history.push('/signin'), [history]);
     return (
-        <Header>
+        <HeaderContainer>
             <Logo src={logo} />
             <Line />
             <SearchBar />
@@ -59,11 +62,11 @@ const Toolbar: React.FC = () => {
                 <LightMenu>탐색</LightMenu>
                 <LightMenu>현황</LightMenu>
                 <Line style={{marginRight: '15px'}}/>
-                <HeavyMenu>로그인</HeavyMenu>
+                <HeavyMenu onClick={signin}>로그인</HeavyMenu>
                 <HeavyMenu>기업서비스</HeavyMenu>
             </RightMenu>
-        </Header>
+        </HeaderContainer>
     )
 }
 
-export default Toolbar;
+export default withRouter(Header);

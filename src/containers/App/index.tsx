@@ -1,5 +1,6 @@
 import React from 'react';
-import Toolbar from '../../components/Toolbar';
+import Header from '../../components/Header';
+import { Provider } from 'mobx-react';
 import { BrowserRouter as Router, Route } from "react-router-dom";
 import styled from 'styled-components';
 import SigninContainer from '../Auth/Signin';
@@ -12,15 +13,17 @@ const AppContainer = styled.div`
 
 const App: React.FC = () => {
   return (
-    <AppContainer>
-      <Toolbar />
-      <Router>
-        <div style={{flex: 1}}>
-          <Route path="/signin" component={SigninContainer} />
-          <Route path="/signup" component={SignupContainer} />
-        </div>
-      </Router>
-    </AppContainer>
+    <Provider>
+      <AppContainer>
+        <Router>
+          <Header />
+          <div style={{ flex: 1 }}>
+            <Route path="/signin" component={SigninContainer} />
+            <Route path="/signup" component={SignupContainer} />
+          </div>
+        </Router>
+      </AppContainer>
+    </Provider>
   );
 }
 
