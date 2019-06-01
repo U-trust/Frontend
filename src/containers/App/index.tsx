@@ -5,6 +5,7 @@ import { BrowserRouter as Router, Route } from "react-router-dom";
 import styled from 'styled-components';
 import SigninContainer from '../Auth/Signin';
 import SignupContainer from '../Auth/Signup';
+import SearchContainer from '../Search';
 import AuthStore from '../../store/AuthStore';
 
 const AppContainer = styled.div`
@@ -21,6 +22,7 @@ const App: React.FC = () => {
         <Router>
           <Header />
           <div style={{ flex: 1 }}>
+            <Route path="/search" component={SearchContainer} />
             <Route path="/signin" component={SigninContainer} />
             <Route path="/signup" component={SignupContainer} />
           </div>
