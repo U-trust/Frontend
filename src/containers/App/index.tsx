@@ -7,6 +7,8 @@ import SigninContainer from '../Auth/Signin';
 import SignupContainer from '../Auth/Signup';
 import SearchContainer from '../Search';
 import HomeContainer from '../Home';
+import TrackDetailContainer from '../TrackDetail';
+import StatusContainer from '../Status';
 import AuthStore from '../../store/AuthStore';
 
 const AppContainer = styled.div`
@@ -27,6 +29,8 @@ const App: React.FC = () => {
             <Route path="/search" component={SearchContainer} />
             <Route path="/signin" component={SigninContainer} />
             <Route path="/signup" component={SignupContainer} />
+            <Route path="/detail" component={TrackDetailContainer} />
+            <Route path="/status" component={StatusContainer} />
           </div>
         </Router>
       </AppContainer>

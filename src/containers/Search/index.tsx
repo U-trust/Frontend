@@ -14,10 +14,10 @@ const InputWithTitle = withFormInputLabel(TextInput);
 
 const Search: React.FC<RouteComponentProps> = observer(({ history }) => {
     const [searchStore] = useState(() => new SearchStore());
-    const trackHandler = useCallback((track: Track) => history.push(`/track?id=${track.id}`), [history])
+    const trackHandler = useCallback((track: Track) => history.push(`/detail?id=${track.id}`), [history])
     return (
         <Container>
-            <SearchTitle>전체</SearchTitle>
+            <SearchTitle>{`전체${searchStore.searchTitle}`}</SearchTitle>
             <FormGroup style={{ marginBottom: '20px' }}>
                 <div style={{ marginRight: '30px' }}>
                     <OptionWithTitle
@@ -36,8 +36,8 @@ const Search: React.FC<RouteComponentProps> = observer(({ history }) => {
                         onSelectValue={searchStore.setSecondFilter} />
                 </div>
                 <RightGroup>
-                    <div><InputWithTitle title="검색" style={{ width: '250px', padding: '10px', marginRight: '10px' }} margin={false} /></div>
-                    <FormButton style={{ height: '40px', padding: '10px 25px', backgroundColor: '#ff9b00' }} >검색</FormButton>
+                    <div><InputWithTitle title="검색" value={searchStore.searchText} onChange={searchStore.setSearchText} style={{ width: '250px', padding: '10px', marginRight: '10px' }} margin={false} /></div>
+                    <FormButton onClick={searchStore.search} style={{ height: '40px', padding: '10px 25px', backgroundColor: '#ff9b00' }} >검색</FormButton>
                 </RightGroup>
             </FormGroup>
             <Grid>

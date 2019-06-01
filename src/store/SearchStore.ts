@@ -11,6 +11,8 @@ export default class SearchStore {
     @observable secondFilter?: string;
     @observable firstFilters: string[] = ['개발자', '디자이너'];
     @observable secondFilters: string[] = [];
+    @observable searchTitle: string = '';
+    @observable searchText: string = '';
     @observable results: Track[] = [{
         id: '1',
         title: '블랭크가 책임져드립니다. 개발자...',
@@ -87,5 +89,22 @@ export default class SearchStore {
 
     @action setSecondFilter = (filter?: string) => {
         this.secondFilter = filter;
+    }
+
+    @action setSearchText = (e: React.ChangeEvent) => {
+        this.searchText = (e.target as HTMLInputElement).value;
+    }
+
+    @action search = () => {
+        this.searchTitle = '';
+        if(this.firstFilter) {
+            this.searchTitle = ` > ${this.firstFilter}`;
+            if(this.secondFilter) {
+                this.searchTitle += ` > ${this.secondFilter}`;
+            }
+        }
+        if(this.searchText.length > 0) {
+            this.searchTitle += ` > ${this.searchText}`;
+        }
     }
 }
