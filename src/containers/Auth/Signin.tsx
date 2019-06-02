@@ -7,6 +7,7 @@ import { Title, SimpleLabel } from 'components/Label';
 import { FormButton } from 'components/Button';
 import { Container, FormContainer, FormInput } from './styles';
 import SignStore from 'store/SignStore';
+import { PREFIX } from 'util/const';
 const SubLabel = styled.span`
     font-weight: bold;
     float: right;
@@ -19,7 +20,7 @@ interface Props {
 
 const Signin: React.FC<Props> = observer(({history}) => {
     const [store] = useState(() => new SignStore());
-    const redirectToSignup = useCallback(() => history.push('/signup'), [history]);
+    const redirectToSignup = useCallback(() => history.push(`${PREFIX}/signup`), [history]);
     return (
         <Container>
             <FormContainer>

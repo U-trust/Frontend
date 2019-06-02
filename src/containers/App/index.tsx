@@ -11,6 +11,7 @@ import TrackDetailContainer from '../TrackDetail';
 import StatusContainer from '../Status';
 import MyInfoContainer from '../MyInfo';
 import AuthStore from '../../store/AuthStore';
+import { PREFIX } from 'util/const';
 
 const AppContainer = styled.div`
   display: flex;
@@ -19,7 +20,7 @@ const AppContainer = styled.div`
 
 const authStore = new AuthStore();
 
-const redirect = () => <Redirect to={`/home`}/>;
+const redirect = () => <Redirect to={`${PREFIX}/home`}/>;
 const App: React.FC = () => {
   return (
     <Provider authStore={authStore}>
@@ -27,15 +28,14 @@ const App: React.FC = () => {
         <Router>
           <Header />
           <div style={{ flex: 1, marginTop: '60px' }}>
-
-          <Route exact={true} path="/" component={redirect} />
-            <Route path="/home" component={HomeContainer} />
-            <Route path="/search" component={SearchContainer} />
-            <Route path="/signin" component={SigninContainer} />
-            <Route path="/signup" component={SignupContainer} />
-            <Route path="/detail" component={TrackDetailContainer} />
-            <Route path="/status" component={StatusContainer} />
-            <Route path="/myinfo" component={MyInfoContainer} />
+            <Route exact={true} path={PREFIX} component={redirect} />
+            <Route path={`${PREFIX}/home`} component={HomeContainer} />
+            <Route path={`${PREFIX}/search`} component={SearchContainer} />
+            <Route path={`${PREFIX}/signin`} component={SigninContainer} />
+            <Route path={`${PREFIX}/signup`} component={SignupContainer} />
+            <Route path={`${PREFIX}/detail`} component={TrackDetailContainer} />
+            <Route path={`${PREFIX}/status`} component={StatusContainer} />
+            <Route path={`${PREFIX}/myinfo`} component={MyInfoContainer} />
           </div>
         </Router>
       </AppContainer>

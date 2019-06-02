@@ -6,6 +6,7 @@ display: flex;
 position: fixed;
 width: 80%;
 background: white;
+z-index: 99;
 `
 
 export const Logo = styled.img`

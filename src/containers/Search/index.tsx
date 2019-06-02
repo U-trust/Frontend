@@ -11,6 +11,7 @@ import { RouteComponentProps } from 'react-router';
 import UserStore from 'store/UserStore';
 import AuthStore from 'store/AuthStore';
 import { UserCard } from 'components/Card/UserCard';
+import { PREFIX } from 'util/const';
 
 const OptionWithTitle = withFormInputLabel(Option);
 const InputWithTitle = withFormInputLabel(TextInput);
@@ -23,7 +24,7 @@ const Search: React.FC<Props & RouteComponentProps> = inject('authStore')(observ
     const auth = authStore as AuthStore;
     const [searchStore] = useState(() => new SearchStore());
     const [userStore] = useState(() => new UserStore());
-    const trackHandler = useCallback((track: Track) => history.push(`/detail?id=${track.id}`), [history])
+    const trackHandler = useCallback((track: Track) => history.push(`${PREFIX}/detail?id=${track.id}`), [history])
     return (
         <Container>
             <SearchTitle>{`전체${searchStore.searchTitle}`}</SearchTitle>

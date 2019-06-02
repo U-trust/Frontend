@@ -2,6 +2,7 @@ import React, {useCallback} from 'react';
 import Account from '../../models/Account';
 import styled from 'styled-components';
 import dropdownIcon from '../../assets/ic_arrow_down.svg';
+import { PREFIX } from 'util/const';
 
 const Image = styled.img`
     width: 27px;
@@ -58,7 +59,7 @@ interface Props {
 }
 
 export const Profile: React.FC<Props> = ({ account, onMenuClick }) => {
-    const myInfo = useCallback(() => onMenuClick('/myinfo'), [onMenuClick]);
+    const myInfo = useCallback(() => onMenuClick(`${PREFIX}/myinfo`), [onMenuClick]);
     return (
         <ProfileContainer>
             <Image src={account.photo} />

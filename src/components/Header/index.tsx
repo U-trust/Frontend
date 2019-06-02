@@ -7,6 +7,7 @@ import { SearchBar } from './SearchBar';
 import { Profile } from './Profile';
 import { HeaderContainer, Logo, Line, RightMenu, LightMenu, HeavyMenu } from './styles';
 import AuthStore from 'store/AuthStore';
+import { PREFIX } from 'util/const';
 
 interface OwnProps {
     authStore?: AuthStore
@@ -16,10 +17,10 @@ type Props = OwnProps & RouteComponentProps;
 
 const Header: React.FC<Props> = inject('authStore')(observer(({ authStore, history }) => {
     const auth = authStore as AuthStore;
-    const signin = useCallback(() => history.push('/signin'), [history]);
-    const home = useCallback(() => history.push('/home'), [history]);
-    const search = useCallback(() => history.push('/search'), [history]);
-    const status = useCallback(() => history.push('/status'), [history]);
+    const signin = useCallback(() => history.push(`${PREFIX}/signin`), [history]);
+    const home = useCallback(() => history.push(`${PREFIX}/home`), [history]);
+    const search = useCallback(() => history.push(`${PREFIX}/search`), [history]);
+    const status = useCallback(() => history.push(`${PREFIX}/status`), [history]);
     const onMenuClick = useCallback((path: string) => history.push(path), [history]);
     return (
         <HeaderContainer>
