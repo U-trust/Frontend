@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" id="logo_utrust" width="36" height="36" viewBox="0 0 36 36">
+    <defs>
+        <style>
+            .cls-1{fill:#1a1a1a}.cls-2{fill:#fff}.cls-3{fill:#ff9b00}
+        </style>
+    </defs>
+    <g id="Layer_1" data-name="Layer 1">
+        <rect id="사각형_1" width="36" height="36" class="cls-1" data-name="사각형 1" rx="6.01"/>
+        <path id="패스_1" d="M53.081 43.4H48.31V24.02h-4.77v24.224h14.276v-9.689h-4.735z" class="cls-2" data-name="패스 1" transform="translate(-32.678 -18.132)"/>
+        <path id="패스_2" d="M84.86 43.48h-2.4v4.67h2.4a2.336 2.336 0 0 0 2.34-2.336 2.336 2.336 0 0 0-2.34-2.334z" class="cls-3" data-name="패스 2" transform="translate(-61.999 -32.692)"/>
+    </g>
+</svg>
