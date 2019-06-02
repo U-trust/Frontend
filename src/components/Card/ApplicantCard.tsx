@@ -1,6 +1,6 @@
 import React, {useCallback} from 'react';
 import styled from 'styled-components';
-import { Track } from 'models/Track';
+import Account from 'models/Account';
 import { FormButton } from 'components/Button';
 
 const Container = styled.div`
@@ -40,35 +40,47 @@ const Control = styled.div`
     justify-content: flex-end;
     align-items: center;
 `
-const Status = styled.div`
+const Desc = styled.div`
     font-size: 16px;
     font-weight: bold;
     font-style: normal;
     font-stretch: normal;
     line-height: 1.45;
     letter-spacing: -0.8px;
-    text-align: center;
-    color: #000000;
+    text-align: left;
+    color: #ff9b00;
+`
+const Tag = styled.div`
+font-size: 16px;
+font-weight: normal;
+font-style: normal;
+font-stretch: normal;
+line-height: 1.45;
+letter-spacing: -0.8px;
+text-align: left;
+margin-top: 10px;
+color: rgba(0, 0, 0, 0.5);
 `
 
 interface Prop {
-    track: Track
-    onAction:(track: Track) => void
+    user: Account,
+    onAction: (user: Account) => void
 }
 
-export const StatusCard: React.FC<Prop> = ({ track, onAction }) => {
-    const cancel = useCallback(() => onAction(track), [track, onAction]);
+export const ApplicantCard: React.FC<Prop> = ({ user, onAction }) => {
+    const allow = useCallback(() => onAction(user), [user, onAction]);
     return (
         <Container>
-            <Image src={track.thumbnail} />
+            <Image src={user.photo} />
             <Content>
-                <Title>{track.title}</Title>
-                <SubTitle>{track.subTitle}</SubTitle>
+                <Title>{user.name}</Title>
+                <SubTitle>{user.job}</SubTitle>
+                <Desc>B등급 적합  |  380만원</Desc>
+                <Tag>#직무성향부합</Tag>
             </Content>
             <Control>
                 <div>
-                    <FormButton style={{padding: '10px 20px', marginBottom: '10px'}} onClick={cancel}>접수 취소</FormButton>
-                    <Status>지원 완료</Status>
+                    <FormButton style={{padding: '10px 20px', marginBottom: '10px'}} onClick={allow}>합격</FormButton>
                 </div>
             </Control>
         </Container>

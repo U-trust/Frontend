@@ -1,5 +1,5 @@
 import React, { useState, useCallback } from 'react';
-import { observer } from 'mobx-react';
+import { inject, observer } from 'mobx-react';
 import { Option, TextInput } from '../../components/Input';
 import { Container, SearchTitle, FormGroup, RightGroup, Grid } from './styles';
 import SearchStore from 'store/SearchStore';
@@ -8,12 +8,21 @@ import { FormButton } from 'components/Button';
 import { TrackCard } from 'components/Card/TrackCard';
 import { Track } from 'models/Track';
 import { RouteComponentProps } from 'react-router';
+import UserStore from 'store/UserStore';
+import AuthStore from 'store/AuthStore';
+import { UserCard } from 'components/Card/UserCard';
 
 const OptionWithTitle = withFormInputLabel(Option);
 const InputWithTitle = withFormInputLabel(TextInput);
 
-const Search: React.FC<RouteComponentProps> = observer(({ history }) => {
+interface Props {
+    authStore?: AuthStore
+}
+
+const Search: React.FC<Props & RouteComponentProps> = inject('authStore')(observer(({ authStore, history }) => {
+    const auth = authStore as AuthStore;
     const [searchStore] = useState(() => new SearchStore());
+    const [userStore] = useState(() => new UserStore());
     const trackHandler = useCallback((track: Track) => history.push(`/detail?id=${track.id}`), [history])
     return (
         <Container>
@@ -41,10 +50,11 @@ const Search: React.FC<RouteComponentProps> = observer(({ history }) => {
                 </RightGroup>
             </FormGroup>
             <Grid>
-                {searchStore.results.map(r => <TrackCard track={r} onClick={trackHandler} />)}
+                {auth.isCompany && userStore.results.map(user => <UserCard user={user}/>)}
+                {!auth.isCompany && searchStore.results.map(r => <TrackCard track={r} onClick={trackHandler} />)}
             </Grid>
         </Container>
     )
-});
+}));
 
 export default Search;

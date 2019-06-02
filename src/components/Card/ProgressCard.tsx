@@ -1,6 +1,6 @@
 import React, {useCallback} from 'react';
 import styled from 'styled-components';
-import { Track } from 'models/Track';
+import Account from 'models/Account';
 import { FormButton } from 'components/Button';
 
 const Container = styled.div`
@@ -40,35 +40,36 @@ const Control = styled.div`
     justify-content: flex-end;
     align-items: center;
 `
-const Status = styled.div`
+const Desc = styled.div`
     font-size: 16px;
     font-weight: bold;
     font-style: normal;
     font-stretch: normal;
     line-height: 1.45;
     letter-spacing: -0.8px;
-    text-align: center;
-    color: #000000;
+    text-align: left;
+    color: #ff9b00;
 `
 
 interface Prop {
-    track: Track
-    onAction:(track: Track) => void
+    user: Account,
+    onAction: (user: Account) => void
 }
 
-export const StatusCard: React.FC<Prop> = ({ track, onAction }) => {
-    const cancel = useCallback(() => onAction(track), [track, onAction]);
+export const ProgressCard: React.FC<Prop> = ({ user, onAction }) => {
+    const stop = useCallback(() => onAction(user), [user, onAction]);
     return (
         <Container>
-            <Image src={track.thumbnail} />
+            <Image src={user.photo} />
             <Content>
-                <Title>{track.title}</Title>
-                <SubTitle>{track.subTitle}</SubTitle>
+                <Title>{user.name}</Title>
+                <SubTitle>{user.job}</SubTitle>
+                <Desc>B등급 적합  |  380만원</Desc>
+                <Desc style={{fontSize: '20px', marginTop: '10px'}}>진행률 : 0%</Desc>
             </Content>
             <Control>
                 <div>
-                    <FormButton style={{padding: '10px 20px', marginBottom: '10px'}} onClick={cancel}>접수 취소</FormButton>
-                    <Status>지원 완료</Status>
+                    <FormButton style={{padding: '10px 20px', marginBottom: '10px'}} onClick={stop}>중단</FormButton>
                 </div>
             </Control>
         </Container>

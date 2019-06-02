@@ -1,7 +1,17 @@
 import { observable } from 'mobx';
 import Account from '../models/Account';
+import * as AuthApi from '../api/AuthApi';
 
 export default class AuthStore {
-    @observable isLogined: boolean = true;
-    @observable account: Account = {name : '홍길동', photo: 'https://cdn.zeplin.io/5cf26e12308e3b1daa3e6eaf/assets/6eeaab2d-3ff4-4395-960c-4357d27e1b7d.png'};
+    @observable isLogined: boolean = false;
+    @observable isCompany: boolean = false;
+    @observable account?: Account;
+
+    constructor() {
+        AuthApi.getCurrentAuth().then(res => {
+            this.isLogined = true;
+            this.account = res;
+            this.isCompany = !!res.company;
+        })
+    }
 }
