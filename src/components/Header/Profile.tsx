@@ -62,7 +62,7 @@ export const Profile: React.FC<Props> = ({ account, onMenuClick }) => {
     const myInfo = useCallback(() => onMenuClick(`${PREFIX}/myinfo`), [onMenuClick]);
     return (
         <ProfileContainer>
-            <Image src={account.icon} />
+            <Image src={'https://cdn.zeplin.io/5cf26e12308e3b1daa3e6eaf/assets/6eeaab2d-3ff4-4395-960c-4357d27e1b7d.png'} />
             <Label>{account.name} <ArrowImg src={dropdownIcon}/></Label>
             <Menu onClick={myInfo}>내정보</Menu>
         </ProfileContainer>

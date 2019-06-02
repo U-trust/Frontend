@@ -1,10 +1,11 @@
-import React, { useState } from 'react';
+import React, { useState, useCallback} from 'react';
 import queryString from 'query-string';
 import styled from 'styled-components';
 import { FormButton } from 'components/Button';
 import { RouteComponentProps } from 'react-router';
 import TrackStore from 'store/TrackStore';
 import { SimpleLabel } from 'components/Label';
+import { PREFIX } from 'util/const';
 
 const Container = styled.div`
     padding: 30px 25% 150px 25%;
@@ -39,10 +40,14 @@ const Line = styled.div`
     margin-bottom: 20px;
 `
 
-const TrackDetail: React.FC<RouteComponentProps> = ({ location }) => {
+const TrackDetail: React.FC<RouteComponentProps> = ({ location, history }) => {
     const values = queryString.parse(location.search)
     const trackId = values.id;
     const [trackStore] = useState(() => new TrackStore(trackId ? trackId[0] : ''));
+    const apply = useCallback(() => {
+        trackStore.apply();
+        history.push(`${PREFIX}/status`);
+    }, [trackStore, history]);
     return (
         <>
             <Container>
@@ -86,7 +91,7 @@ const TrackDetail: React.FC<RouteComponentProps> = ({ location }) => {
             <BottomBar>
                 서류를 제출하여 후원을 받아보세요!
                 <div style={{ flex: 1, display: 'flex', justifyContent: 'flex-end' }}>
-                    <FormButton style={{ color: '#ff9b00', backgroundColor: 'white' }} onClick={trackStore.apply}>지원하기</FormButton>
+                    <FormButton style={{ color: '#ff9b00', backgroundColor: 'white' }} onClick={apply}>지원하기</FormButton>
                 </div>
             </BottomBar>
         </>
