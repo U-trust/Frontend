@@ -1,4 +1,4 @@
-import React, {useCallback} from 'react';
+import React, { useCallback } from 'react';
 import styled from 'styled-components';
 import { Track } from 'models/Track';
 import { FormButton } from 'components/Button';
@@ -53,7 +53,7 @@ const Status = styled.div`
 
 interface Prop {
     track: Track
-    onAction:(track: Track) => void
+    onAction: (track: Track) => void
 }
 
 export const StatusCard: React.FC<Prop> = ({ track, onAction }) => {
@@ -67,7 +67,7 @@ export const StatusCard: React.FC<Prop> = ({ track, onAction }) => {
             </Content>
             <Control>
                 <div>
-                    <FormButton style={{padding: '10px 20px', marginBottom: '10px'}} onClick={cancel}>접수 취소</FormButton>
+                    <FormButton style={{ padding: '10px 20px', marginBottom: '10px' }} onClick={cancel}>접수 취소</FormButton>
                     <Status>지원 완료</Status>
                 </div>
             </Control>
