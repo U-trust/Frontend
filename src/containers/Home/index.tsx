@@ -33,7 +33,7 @@ const Home: React.FC<Props> = inject('authStore')(observer(({ authStore }) => {
         </Container>
     ) : (
             <>
-                <img src="https://cdn.zeplin.io/5cf26e12308e3b1daa3e6eaf/assets/927fc728-13f5-4984-bed2-19dbf88d3def.png" alt="home" />
+                <img style={{width: '100%'}} src="https://cdn.zeplin.io/5cf26e12308e3b1daa3e6eaf/assets/927fc728-13f5-4984-bed2-19dbf88d3def.png" alt="home" />
                 <Container>
                     <FormInputLabel title="서비스 프로모션" />
                     <Promition src={promotionBg} />

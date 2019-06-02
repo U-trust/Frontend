@@ -1,6 +1,7 @@
 import React from 'react';
 import { observable, action } from 'mobx';
 import * as AuthApi from '../api/AuthApi';
+import AuthStore from './AuthStore';
 
 export default class SignStore {
     @observable firstName: string = '';
@@ -8,15 +9,16 @@ export default class SignStore {
     @observable email: string = '';
     @observable password: string = '';
 
+    constructor(private authStore: AuthStore){}
 
     signin = async () => {
         const res = await AuthApi.signin(this.email, this.password);
-        alert(res);
+        this.authStore.setCurrentAccount(res);
     }
 
     signup = async () => {
         const res = await AuthApi.signup(this.firstName + this.lastName, this.email, this.password);
-        alert(res);
+        return res;
     }
 
     @action setFirstName = (e: React.ChangeEvent) => {

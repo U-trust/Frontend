@@ -62,7 +62,7 @@ export const Profile: React.FC<Props> = ({ account, onMenuClick }) => {
     const myInfo = useCallback(() => onMenuClick(`${PREFIX}/myinfo`), [onMenuClick]);
     return (
         <ProfileContainer>
-            <Image src={account.photo} />
+            <Image src={account.icon} />
             <Label>{account.name} <ArrowImg src={dropdownIcon}/></Label>
             <Menu onClick={myInfo}>내정보</Menu>
         </ProfileContainer>

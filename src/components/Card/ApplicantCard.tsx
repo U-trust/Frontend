@@ -5,6 +5,7 @@ import { FormButton } from 'components/Button';
 
 const Container = styled.div`
     display: flex;
+    margin-bottom: 10px;
 `
 const Image = styled.img`
     width: 220px;

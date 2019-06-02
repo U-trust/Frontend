@@ -5,6 +5,7 @@ import {Track} from '../../models/Track';
 const Container = styled.div`
     margin-bottom: 10px;
     cursor: pointer;
+    margin-bottom: 10px;
 `
 
 const Thumbnail = styled.img`

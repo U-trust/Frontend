@@ -10,6 +10,11 @@ export default class TrackStore {
     }
 
     @action apply = () => {
+        const list = localStorage.getItem('applies') || '[]';
+        const listObj = JSON.parse(list);
+        listObj.push(this.track as Track);
+        localStorage.setItem('applies', JSON.stringify(listObj));
         alert(`${this.track ? this.track.title : '???'}에 신청하였습니다.`);
     }
+
 }

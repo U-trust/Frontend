@@ -1,6 +1,5 @@
-import { observable } from 'mobx';
+import { observable, action } from 'mobx';
 import Account from '../models/Account';
-import * as AuthApi from '../api/AuthApi';
 
 export default class AuthStore {
     @observable isLogined: boolean = false;
@@ -8,10 +7,16 @@ export default class AuthStore {
     @observable account?: Account;
 
     constructor() {
-        AuthApi.getCurrentAuth().then(res => {
-            this.isLogined = true;
-            this.account = res;
-            this.isCompany = !!res.company;
-        })
+        const res = localStorage.getItem('acc');
+        if(res) {
+            this.setCurrentAccount(JSON.parse(res) as Account);
+        }
+    }
+
+    @action setCurrentAccount = (account: Account) => {
+        localStorage.setItem('acc', JSON.stringify(account));
+        this.isLogined = true;
+        this.account = account;
+        this.isCompany = !!account.company;
     }
 }
